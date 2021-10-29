@@ -9,6 +9,7 @@ class ServicesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // now we make service section attractive and good
     return Wrap(
       // ignore: prefer_const_literals_to_create_immutables
       children: [
@@ -45,10 +46,10 @@ class Services extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
           padding: EdgeInsets.all(kPadding / 2),
+          width: 300,
           child: Column(
             children: [
-              Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
+              Row(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
@@ -62,11 +63,17 @@ class Services extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  Expanded(
+                    child: Text(
+                      title,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 10,
               ),
               Text(
                 "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit, ",

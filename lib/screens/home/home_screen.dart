@@ -28,21 +28,42 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      drawer: Drawer(
+        child: ListView(
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            //header
-            HeaderContainer(),
-            //body
-            BodyContainer(),
-            //footer
-            SizedBox(
-              height: 30,
+            DrawerHeader(
+              child: Center(
+                child: Text(
+                  "Foodie",
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w900,
+                      color: kSecondaryColor),
+                ),
+              ),
             ),
-            Footer(),
-            //now we make our website responsive
+            MobMenu()
           ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              //header
+              HeaderContainer(),
+              //body
+              BodyContainer(),
+              //footer
+              SizedBox(
+                height: 30,
+              ),
+              Footer(),
+              //now we make our website responsive
+            ],
+          ),
         ),
       ),
     );

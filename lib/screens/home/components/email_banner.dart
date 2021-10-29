@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -13,18 +14,25 @@ class EmailBanner extends StatelessWidget {
       children: [
         ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset("assets/images/subscribe_banner.jpg")),
+            child: Image.asset(
+              "assets/images/subscribe_banner.jpg",
+              height: 200,
+              width: 1230,
+              fit: BoxFit.cover,
+            )),
         Padding(
           padding: const EdgeInsets.all(kPadding),
           child: Align(
             alignment: Alignment.center,
             child: Column(
               children: [
-                Text(
+                AutoSizeText(
                   "Join our member and get\ndiscount up to 50%",
+                  maxLines: 2,
+                  minFontSize: 14,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 36,
+                      fontSize: 26,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(

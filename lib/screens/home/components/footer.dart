@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_food_ordering_web/model.dart/responsive.dart';
 
 import '../../../constants.dart';
 import 'menu.dart';
@@ -60,9 +61,14 @@ class Footer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(flex: 3, child: HeaderWebMenu()),
+                if (Responsive.isDesktop(context))
+                  Expanded(flex: 3, child: HeaderWebMenu()),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            if (!Responsive.isDesktop(context)) MobFooterMenu(),
           ],
         ),
       ),

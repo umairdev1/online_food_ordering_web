@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:online_food_ordering_web/model.dart/product_model.dart';
 
@@ -34,9 +35,13 @@ class Products extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
+                AutoSizeText(
                   product.title,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  maxLines: 2,
+                  minFontSize: 14,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
                 )
               ],
             ),

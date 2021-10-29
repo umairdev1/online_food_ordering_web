@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_food_ordering_web/model.dart/responsive.dart';
 
 import '../../../constants.dart';
 import 'menu.dart';
@@ -10,8 +11,19 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
     return Row(
       children: [
+        // it  display only on mobile and tab
+        //not working
+
+        if (!Responsive.isDesktop(context))
+          Builder(
+              builder: (context) => IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: Icon(Icons.menu))),
         Text(
           "Foodie",
           style: TextStyle(
@@ -21,32 +33,43 @@ class Header extends StatelessWidget {
         ),
         Spacer(),
         //menu
-        HeaderWebMenu(),
+        if (Responsive.isDesktop(context)) HeaderWebMenu(),
         Spacer(),
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey.withOpacity(0.3)),
-            ),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
+
+        _size.width > 400
+            ? Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey.withOpacity(0.3)),
                   ),
-                  hintText: "Search",
-                  hintStyle:
-                      TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-                  focusedBorder:
-                      UnderlineInputBorder(borderSide: BorderSide.none),
-                  enabledBorder:
-                      UnderlineInputBorder(borderSide: BorderSide.none)),
-            ),
-          ),
-        ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
+                        hintText: "Search",
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 14),
+                        focusedBorder:
+                            UnderlineInputBorder(borderSide: BorderSide.none),
+                        enabledBorder:
+                            UnderlineInputBorder(borderSide: BorderSide.none)),
+                  ),
+                ),
+              )
+            : Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.withOpacity(0.3)),
+                ),
+                child: Icon(Icons.search)),
         SizedBox(
           width: 10,
         ),

@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:online_food_ordering_web/model.dart/responsive.dart';
 
 import '../../../constants.dart';
 import 'banner_section.dart';
@@ -21,12 +24,13 @@ class HeaderContainer extends StatelessWidget {
             padding: EdgeInsets.all(kPadding),
             constraints: BoxConstraints(maxWidth: kMaxWidth),
             child: Column(
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Header(),
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
-                BannerSection()
+                Responsive.isDesktop(context) ? BannerSection() : MobBanner(),
               ],
             ),
           ),
