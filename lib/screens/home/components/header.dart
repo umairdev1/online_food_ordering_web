@@ -47,6 +47,7 @@ class Header extends StatelessWidget {
                     border: Border.all(color: Colors.grey.withOpacity(0.3)),
                   ),
                   child: TextFormField(
+
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
@@ -66,6 +67,7 @@ class Header extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10, right: 10),
                 height: 50,
                 decoration: BoxDecoration(
+
                   color: Colors.white,
                   border: Border.all(color: Colors.grey.withOpacity(0.3)),
                 ),
